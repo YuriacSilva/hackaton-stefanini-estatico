@@ -29,18 +29,22 @@
           class="form-control"
           id="cep"
           ng-model="endCtrl.service.endereco.cep"
-          ui-mask="99\.999-999" 
-          placeholder="Digite o cep"
+          ui-mask="99.999-999" 
         />
       </div>
       <div class="form-group">
         <label for="uf">UF: </label>
-        <Input
-          type="text"
-          class="form-control"
-          id="uf"
-          ng-model="endCtrl.service.endereco.uf"
-        />
+        <div>
+          <select
+            style="width: 250px; height: 38px;"
+            ng-class="{'disabledDiv': endCtrl.listaUF.length === 0, 'custom-select custom-select-sm': true}"
+            ng-options="item.id as item.desc for item in endCtrl.listaUF track by item.id"
+            id="uf" 
+            ng-model="endCtrl.service.endereco.uf"
+          >
+            <option value="">-- UF --</option>
+          </select>
+        </div>
       </div>
       <div class="form-group">
         <label for="localidade">Cidade: </label>

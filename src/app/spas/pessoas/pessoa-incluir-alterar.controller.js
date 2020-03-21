@@ -42,6 +42,8 @@ function PessoaIncluirAlterarController(
     complemento: ""
   };
 
+  vm.enderecosMem = [];
+
   vm.service = EnderecoService;
 
   vm.urlEndereco = "http://localhost:8080/treinamento/api/enderecos/";
@@ -70,6 +72,7 @@ function PessoaIncluirAlterarController(
                   vm.pessoa = pessoaRetorno;
                   vm.pessoa.dataNascimento = vm.formataDataTela(pessoaRetorno.dataNascimento);
                   vm.perfil = vm.pessoa.perfils[0];
+                  vm.pessoa.perfils = [];
                 }
               }
             );
@@ -131,10 +134,11 @@ function PessoaIncluirAlterarController(
         objetoDados.perfils.push(vm.perfil);
     }
     if (vm.acao == "Cadastrar") {
-
+      console.log(objetoDados);
       vm.salvar(vm.urlPessoa, objetoDados).then(
         function (pessoaRetorno) {
           vm.retornarTelaListagem();
+          console.log(pessoaRetorno);
         });
     } else if (vm.acao == "Editar") {
       vm.alterar(vm.urlPessoa, objetoDados).then(
@@ -194,6 +198,8 @@ function PessoaIncluirAlterarController(
       function (response) {
         if (response.status == 200) {
           deferred.resolve(response.data);
+        } else {
+          vm.pessoa.dataNascimento = vm.formataDataTela(vm.pessoa.dataNascimento);
         }
       }
     );

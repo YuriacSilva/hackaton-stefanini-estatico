@@ -29,11 +29,11 @@
           class="form-control"
           id="nomePerfil"
           ng-model="vm.perfil.nome"
-          placeholder="Digite o nome da perfil ..."
+          placeholder="Digite o nome do perfil ..."
         />
       </div>
       <div class="form-group">
-        <label for="descricaoPerfil">Descrição</label>
+        <label for="descricaoPerfil">Descrição: </label>
         <textarea
           type="text"
           class="form-control"
@@ -42,16 +42,25 @@
         ></textarea>
       </div>
       <div class="form-group">
-        <label for="inclusaoPerfil" style="width: 250px;"
-          >Data de Inclusão</label
-        >
+        <label for="inclusaoPerfil" style="width: 250px;">Data de Inclusão: </label>
         <input
-          type="text"
+          type="datetime"
           class="form-control"
           id="inclusaoPerfil"
-          ng-model="vm.perfil.dataHoraInclusao"
-          ui-mask="99/99/9999"
+          ng-model="vm.perfilExibicao.dataHoraInclusao"
           style="width: 120px;"
+          readonly
+        />
+      </div>
+      <div class="form-group">
+        <label for="alteracaoPerfil" style="width: 250px;">Data de Alteração: </label>
+        <input
+          type="datetime"
+          class="form-control"
+          id="alteracaoPerfil"
+          ng-model="vm.perfilExibicao.dataHoraAlteracao"
+          style="width: 120px;"
+          readonly
         />
       </div>
     </form>
